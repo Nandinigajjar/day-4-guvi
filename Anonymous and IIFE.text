@@ -1,0 +1,218 @@
+Do the below programs in anonymous function & IIFE
+
+1
+Print odd numbers in an array
+
+// Using Anonymous Function
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+(function (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      console.log(arr[i]);
+    
+  }
+})(numbers);
+
+// Using IIFE
+(function (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      console.log(arr[i]);
+    }
+  }
+})([2, 4, 6, 8, 10]);
+
+
+2
+Convert all the strings to title caps in a string array.
+
+// Using Anonymous Function
+var stringArray = ["apple", "grapes", "cherry", "lemon"];
+
+var titleCaseArrayAnonymous = stringArray.map(function (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+});
+
+console.log(titleCaseArrayAnonymous);
+
+// Using IIFE
+var titleCaseArrayIIFE = (function (arr) {
+  return arr.map(function (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  });
+})(stringArray.slice()); 
+
+console.log(titleCaseArrayIIFE);
+
+3
+Sum of all the numbers in an array.
+
+// Using Anonymous Function
+var numbers = [1, 2, 3, 4, 5];
+
+var sumAnonymous = function(arr) {
+  var total = 0;
+  for (var i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+};
+
+console.log(sumAnonymous(numbers));
+
+// Using IIFE
+var sumIIFE = (function(arr) {
+  var total = 0;
+  for (var i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+})(numbers.slice()); 
+
+console.log(sumIIFE);
+
+4
+Return all the prime numbers in an array.
+
+// Using Anonymous Function
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+var primeNumbersAnonymous = function(arr) {
+  return arr.filter(function(num) {
+    if (num < 2) {
+      return false;
+    }
+    for (var i = 2; i < num; i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+
+console.log(primeNumbersAnonymous(numbers));
+
+// Using IIFE
+var primeNumbersIIFE = (function(arr) {
+  return arr.filter(function(num) {
+    if (num < 2) {
+      return false;
+    }
+    for (var i = 2; i < num; i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  });
+})(numbers.slice()); 
+
+console.log(primeNumbersIIFE);
+
+5
+Return all the palindromes in an array.
+
+// Using Anonymous Function
+var words = ["level", "hello", "deed", "world", "radar"];
+
+var palindromesAnonymous = function(arr) {
+  return arr.filter(function(word) {
+    var lowerCaseWord = word.toLowerCase();
+    return lowerCaseWord === lowerCaseWord.split('').reverse().join('');
+  });
+};
+
+console.log(palindromesAnonymous(words));
+
+// Using IIFE
+var palindromesIIFE = (function(arr) {
+  return arr.filter(function(word) {
+    var lowerCaseWord = word.toLowerCase();
+    return lowerCaseWord === lowerCaseWord.split('').reverse().join('');
+  });
+})(words.slice()); 
+
+console.log(palindromesIIFE);
+
+6
+Return median of two sorted arrays of the same size.
+
+// Using Anonymous Function
+var findMedianSortedArraysAnonymous = function(arr1, arr2) {
+  const mergedArray = arr1.concat(arr2).sort((a, b) => a - b)
+  const middleIndex = Math.floor(mergedArray.length / 2);
+  if (mergedArray.length % 2 === 0) {
+    return (mergedArray[middleIndex - 1] + mergedArray[middleIndex]) / 2;
+  } else {
+    return mergedArray[middleIndex];
+  }
+};
+
+console.log(findMedianSortedArraysAnonymous([1, 3, 5], [2, 4, 6]));
+
+// Using IIFE
+var findMedianSortedArraysIIFE = (function(arr1, arr2) {
+  const mergedArray = arr1.concat(arr2).sort((a, b) => a - b);
+  const middleIndex = Math.floor(mergedArray.length / 2);
+  if (mergedArray.length % 2 === 0) {
+    return (mergedArray[middleIndex - 1] + mergedArray[middleIndex]) / 2;
+  } else {
+    return mergedArray[middleIndex];
+  }
+})([1, 3, 5], [2, 4, 6]);
+
+console.log(findMedianSortedArraysIIFE);
+
+7
+Remove duplicates from an array.
+
+// Using Anonymous Function
+var removeDuplicatesAnonymous = function(arr) {
+  return arr.filter(function(value, index, self) {
+    return self.indexOf(value) === index;
+  });
+};
+
+var originalArray = [1, 2, 2, 3, 4, 4, 5];
+var newArrayAnonymous = removeDuplicatesAnonymous(originalArray);
+console.log(newArrayAnonymous);
+
+// Using IIFE
+var newArrayIIFE = (function(arr) {
+  return arr.filter(function(value, index, self) {
+    return self.indexOf(value) === index;
+  });
+})(originalArray.slice()); 
+
+console.log(newArrayIIFE);
+
+8
+Rotate an array by k times.
+
+// Using Anonymous Function
+var rotateArrayAnonymous = function(arr, k) {
+  var len = arr.length;
+  k = k % len; 
+  return arr.slice(k).concat(arr.slice(0, k));
+};
+
+var originalArray = [1, 2, 3, 4, 5];
+var rotatedArrayAnonymous = rotateArrayAnonymous(originalArray, 2);
+console.log(rotatedArrayAnonymous);
+
+// Using IIFE
+var rotatedArrayIIFE = (function(arr, k) {
+  var len = arr.length;
+  k = k % len;
+  return arr.slice(k).concat(arr.slice(0, k));
+})(originalArray.slice(), 2); 
+
+console.log(rotatedArrayIIFE);
+
+
+
+
+
+
